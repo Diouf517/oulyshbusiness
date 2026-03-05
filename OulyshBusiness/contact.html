@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Oulysh Business</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Lien vers Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+    <img src="images/logo.png" alt="Logo Oulysh Business" class="logo">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav id="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+
+
+    <!-- Section Contact -->
+    <section class="contact">
+        <h1>Contactez-nous</h1>
+        <p>Vous avez un projet ou une question ? Envoyez-nous un message ou utilisez nos coordonnées ci-dessous.</p>
+        
+        <!-- Formulaire -->
+        <form action="https://formspree.io/f/mkovlqze" method="POST" class="contact-form">
+    <input type="hidden" name="_redirect" value="http://127.0.0.1/merci.html">
+    
+    <label for="name">Nom</label>
+    <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Votre email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+
+    <button type="submit" class="btn">Envoyer</button>
+</form>
+
+
+        <!-- Coordonnées -->
+        <div class="contact-info">
+            <h2>Nos coordonnées</h2>
+            <ul>
+                <li><i class="fas fa-phone"></i> +221 77 115 27 11</li>
+                <li><i class="fas fa-phone"></i> +221 78 838 42 90</li>
+                <li><i class="fas fa-envelope"></i> oulyshbusiness@gmail.com</li>
+                <li><i class="fab fa-instagram"></i> bae-Oulysh</li>
+                <li><i class="fab fa-tiktok"></i> oulysh business</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Oulysh Business - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
