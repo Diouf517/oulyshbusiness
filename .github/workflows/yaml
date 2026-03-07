@@ -1,0 +1,16 @@
+name: Deploy to Surge
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      - run: npm install --global surge
+      - run: surge ./ oulyshbusiness.surge.sh --token ${{ secrets.SURGE_TOKEN }}
