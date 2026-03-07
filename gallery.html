@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Oulysh Business</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+    <img src="images/logo.png" alt="Logo Oulysh Business" class="logo">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav id="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+
+
+    <!-- Section Galerie -->
+    <section class="gallery">
+        <h1>Nos Réalisations</h1>
+        <p>Découvrez quelques-unes de nos décorations et événements organisés.</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/event1.jpg" alt="Décoration mariage" onclick="openLightbox(0)">
+                <p>Mariage élégant</p>
+            </div>
+            <div class="gallery-item">
+                <img src="images/event2.jpg" alt="Décoration anniversaire" onclick="openLightbox(1)">
+                <p>Anniversaire coloré</p>
+            </div>
+            <div class="gallery-item">
+                <img src="images/event3.jpg" alt="Décoration entreprise" onclick="openLightbox(2)">
+                <p>Événement d’entreprise</p>
+            </div>
+            <div class="gallery-item">
+                <img src="images/event4.jpg" alt="Décoration salon" onclick="openLightbox(3)">
+                <p>Salon de beauté</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+        <img id="lightbox-img" src="" alt="">
+        
+        <!-- Boutons Zoom -->
+        <div class="zoom-controls">
+            <button onclick="zoomImage(1)" class="zoom-btn">+</button>
+            <button onclick="zoomImage(-1)" class="zoom-btn">−</button>
+        </div>
+
+        <!-- Bouton Télécharger -->
+        <a id="download-btn" href="" download class="download">Télécharger</a>
+
+        <span class="next" onclick="changeImage(1)">&#10095;</span>
+        <p id="lightbox-caption"></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Oulysh Business - Tous droits réservés</p>
+    </footer>
+
+    <!-- Script Lightbox -->
+    <script>
+        // Liste des images
+        const images = [
+            {src: "images/event1.jpg", caption: "Décoration mariage"},
+            {src: "images/event2.jpg", caption: "Décoration anniversaire"},
+            {src: "images/event3.jpg", caption: "Décoration entreprise"},
+            {src: "images/event4.jpg", caption: "Décoration salon"}
+        ];
+        let currentIndex = 0;
+        let zoomLevel = 1;
+
+        // Ouvrir la lightbox
+        function openLightbox(index) {
+            currentIndex = index;
+            const lightbox = document.getElementById("lightbox");
+            lightbox.style.display = "flex";
+            setTimeout(() => lightbox.classList.add("show"), 50);
+            updateLightbox();
+        }
+
+        // Fermer la lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById("lightbox");
+            lightbox.classList.remove("show");
+            setTimeout(() => {
+                lightbox.style.display = "none";
+            }, 500);
+        }
+
+        // Changer d’image
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateLightbox();
+        }
+
+        // Mettre à jour l’image, la légende et le bouton Télécharger
+        function updateLightbox() {
+            const img = document.getElementById("lightbox-img");
+            const caption = document.getElementById("lightbox-caption");
+            const downloadBtn = document.getElementById("download-btn");
+
+            img.classList.remove("show");
+            img.src = images[currentIndex].src;
+            caption.innerText = images[currentIndex].caption;
+            downloadBtn.href = images[currentIndex].src;
+
+            zoomLevel = 1; // reset zoom
+            img.style.transform = "scale(1)";
+
+            setTimeout(() => img.classList.add("show"), 50);
+        }
+
+        // ✅ Fonction Zoom
+        function zoomImage(direction) {
+            const img = document.getElementById("lightbox-img");
+            zoomLevel += direction * 0.2; // incrément de 20%
+            if (zoomLevel < 0.5) zoomLevel = 0.5; // limite minimum
+            if (zoomLevel > 2) zoomLevel = 2;     // limite maximum
+            img.style.transform = `scale(${zoomLevel})`;
+        }
+
+        // Navigation au clavier
+        document.addEventListener("keydown", function(event) {
+            const lightbox = document.getElementById("lightbox");
+            const isVisible = window.getComputedStyle(lightbox).display !== "none";
+
+            if (isVisible) {
+                if (event.key === "ArrowLeft") {
+                    changeImage(-1);
+                } else if (event.key === "ArrowRight") {
+                    changeImage(1);
+                } else if (event.key === "Escape") {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

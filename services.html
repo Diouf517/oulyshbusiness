@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - Oulysh Business</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+    <img src="images/logo.png" alt="Logo Oulysh Business" class="logo">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav id="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+
+
+    <!-- Section Services -->
+    <section class="services">
+        <h1>Nos Services</h1>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>📸 Photographe</h3>
+                <p>Capturez vos moments précieux avec nos photographes professionnels.</p>
+            </div>
+            <div class="service-card">
+                <h3>🎀 Décoration</h3>
+                <p>Décoration complète et personnalisée pour vos événements.</p>
+            </div>
+            <div class="service-card">
+                <h3>💄 Salon de beauté</h3>
+                <p>Services de maquillage et coiffure pour sublimer vos invités.</p>
+            </div>
+            <div class="service-card">
+                <h3>🪑 Chaises & Bâches</h3>
+                <p>Location de chaises élégantes et installation de bâches/tentes.</p>
+            </div>
+            <div class="service-card">
+                <h3>🍽️ Traiteur</h3>
+                <p>Menus variés et raffinés pour vos réceptions.</p>
+            </div>
+            <div class="service-card">
+                <h3>🏛️ Lieux</h3>
+                <p>Organisation dans des espaces adaptés à vos besoins.</p>
+            </div>
+            <div class="service-card">
+                <h3>🤵 Hôtesses</h3>
+                <p>Accueil chaleureux et assistance professionnelle pour vos invités.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Oulysh Business - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
